@@ -1,0 +1,183 @@
+:root {
+    --hitam: #564f4f;
+    --kuning: rgb(198, 165, 33);
+
+}
+
+* {
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+html {}
+
+/* navbar */
+
+body {
+    background-color: rgb(178, 181, 238);
+    min-height: 300px;
+    color: var(--hitam);
+}
+
+.navbar {
+    background: rgb(189, 192, 243, 0.8);
+    width: 100%;
+    display: flex;
+    margin: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    border: none;
+    min-height: 3rem;
+    position: fixed;
+    color: black;
+    opacity: 1;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: .5rem;
+}
+
+.a-logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    padding: 0 2rem;
+}
+
+.a-logo span {
+    color: var(--kuning);
+}
+
+
+.a-navbar {
+    color: var(--hitam);
+    padding: 1rem 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-shadow: .1rem .1rem .1rem var(--kuning);
+}
+
+#menu {
+    display: none;
+}
+
+/* posting */
+/* kolom 1 */
+
+.posting {
+    display: flex;
+    width: 98vw;
+    /* height: 700px; */
+}
+
+.kolom1 {
+    margin-top: 6rem;
+    margin-left: 1rem;
+    background: rgba(1, 1, 1, .05);
+    padding: .3rem, .3rem;
+    width: 54vw;
+
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.img-profil {
+    padding: 1rem 1rem;
+    text-align: center;
+}
+
+.nama {
+    font-size: x-large;
+    font-weight: 800;
+}
+
+.kolom1 .img-profil .nama {
+    font-size: 1rem;
+    font-weight: 700px;
+}
+
+
+/* kolom2 */
+.posting .kolom2 {
+    margin-top: 6rem;
+    margin-left: 1rem;
+    padding: 0 1rem;
+    background: rgba(1, 1, 1, .05);
+    padding: 1rem 1rem;
+    width: 54vw;
+
+}
+
+.kolom2-1 {
+    text-align: center;
+margin-top: 45%;
+    
+}
+
+#tentang-saya {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+#a-tentang-saya {
+    font-size: 1.5rem;
+    padding: 2rem 0;
+}
+
+/* device */
+/* device leptop */
+@media (max-width: 945px) {
+    html {
+        font-size: 83%;
+        transition: .3s ease-in-out;
+        animation-delay: .5s;
+    }
+}
+
+/* device tablet 750*/
+@media (max-width: 800px) {
+    html {
+        font-size: 70%;
+        transition: .3s ease-in-out;
+        animation-delay: .5s;
+    }
+
+    #menu {
+        display: inline-block;
+        padding: 0 2rem;
+    }
+
+    .div-navbar {
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        width: 15rem;
+        height: 100vh;
+        transition: .3s ease-in-out;
+        animation-delay: .5s;
+    }
+
+    .div-navbar.active {
+        right: 0;
+        transition: .3s ease-in-out;
+        animation-delay: .5s;
+        background: rgba(138, 163, 222, 0.5);
+
+    }
+
+    .div-navbar a {
+        display: block;
+    }
+}
+
+/* device phone*/
+
