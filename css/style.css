@@ -1,57 +1,51 @@
 :root {
-    --hitam: #564f4f;
+    --hitam: #979595;
     --kuning: rgb(198, 165, 33);
-
 }
 
-* {
+*,
+html {
     font-family: "Caveat", cursive;
     font-optical-sizing: auto;
-    font-weight: <weight>;
     font-style: normal;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     outline: none;
     border: none;
     text-decoration: none;
 }
-
-html {}
-
 /* navbar */
-
-body {
-    background-color: rgb(178, 181, 238);
-    min-height: 300px;
-    color: var(--hitam);
+.container {
+    border: none;
+    width: 100%;
+    margin: 1rem;
 }
 
-.navbar {
-    background: rgb(189, 192, 243, 0.8);
-    width: 100%;
+body .navbar {
+    background: rgba(196, 255, 101, 0.315);
     display: flex;
-    margin: 1rem;
-    padding: 1rem;
-    box-sizing: border-box;
-    border: none;
-    min-height: 3rem;
     position: fixed;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 3rem;
+    width: 98%;
     color: black;
     opacity: 1;
-    align-items: center;
-    justify-content: space-between;
     border-radius: .5rem;
+    padding: 0;
+    justify-content: space-between;
 }
 
 .a-logo {
     font-size: 2.5rem;
+    text-shadow: 3px 3px 1px rgb(0, 0, 0);
     font-weight: 700;
     padding: 0 2rem;
 }
 
 .a-logo span {
     color: var(--kuning);
+    text-shadow: 3px 3px 1px rgb(0, 0, 0);
 }
 
 
@@ -68,69 +62,76 @@ body {
 }
 
 /* posting */
-/* kolom 1 */
 
 .posting {
     display: flex;
-    width: 98vw;
-    /* height: 700px; */
-}
-
-.kolom1 {
-    margin-top: 6rem;
-    margin-left: 1rem;
-    background: rgba(1, 1, 1, .05);
-    padding: .3rem, .3rem;
-    width: 54vw;
-
-}
-
-img {
     width: 100%;
-    height: auto;
+    padding: 0;
+    min-height: 35rem;
+    padding: 4rem 1rem;
+    /* margin-top: 4rem;
+    margin-left: 1rem: */
 }
 
-.img-profil {
-    padding: 1rem 1rem;
+.posting1 {
+    border-radius: .5rem;
+    width: 45%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    background: rgba(1, 1, 1, .05);
+}
+
+.posting1 .nama {
+    font-size: 1.5rem;
+    font-weight: 400;
     text-align: center;
 }
 
+.img-home {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    width: 50%;
+    border-radius: 5%;
+    height: auto;
+    justify-content: center;
+}
+
 .nama {
-    font-size: x-large;
-    font-weight: 800;
+    display: flex;
+    justify-content: center;
 }
-
-.kolom1 .img-profil .nama {
-    font-size: 1rem;
-    font-weight: 700px;
-}
-
-
 /* kolom2 */
 .posting .kolom2 {
-    margin-top: 6rem;
+    border-radius: .5rem;
     margin-left: 1rem;
     padding: 0 1rem;
     background: rgba(1, 1, 1, .05);
     padding: 1rem 1rem;
-    width: 54vw;
+    width: 50%;
 
 }
 
 .kolom2-1 {
-    text-align: center;
-margin-top: 45%;
-    
+    min-height: 35rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
 }
 
 #tentang-saya {
-    font-size: 1.6rem;
+    font-size: 3rem;
     font-weight: 700;
+    text-align: center;
 }
 
 #a-tentang-saya {
-    font-size: 1.5rem;
+    font-size: 2rem;
     padding: 2rem 0;
+    text-align: center;
 }
 
 /* device */
@@ -178,6 +179,3 @@ margin-top: 45%;
         display: block;
     }
 }
-
-/* device phone*/
-
