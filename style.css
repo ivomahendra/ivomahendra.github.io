@@ -102,6 +102,7 @@ body {
 .hero-content {
     z-index: 2;
 }
+
 .hero-content h1 {
     z-index: 2;
     color: var(--text-color);
