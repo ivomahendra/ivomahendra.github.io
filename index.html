@@ -3,48 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ivo Mahendra - Web Portofolio</title>
+    <title>Ivo Mahendra - Web Developer & Designer</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
     <header class="header">
-        <a href="#home" class="logo">Wawan Ivo Mahendra</a>
+        <a href="#home" class="logo">Ivo Mahendra</a>
         <nav class="nav-menu">
             <a href="#home">Home</a>
             <a href="#about">Tentang</a>
             <a href="#projects">Proyek</a>
             <a href="#contact">Kontak</a>
         </nav>
-        <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
+        <button class="menu-toggle" aria-label="Toggle Menu">
+            <i class="fas fa-bars"></i>
+        </button>
     </header>
 
     <section id="home" class="hero">
-        <div class="hero-bg">
-        </div>
+        <div class="hero-bg"></div>
         <div class="hero-content">
-            <h1>Halo, <br>Saya Wawan Ivo Mahendra</h1>
-            <p class="tagline"> Saya adalah orang yang memperlajari Web Developer & Designer secara otodidak</p>
-            <a href="#projects" class="btn primary-btn">Lihat Proyek Saya</a>
+            <h1 class="animate-text">Halo, Saya <span class="highlight">Wawan Ivo Mahendra</span></h1>
+            <p class="tagline">Saya adalah <span class="typed-text"></span><span class="cursor">&nbsp;</span></p>
+            <p class="hero-description">Web Developer & Designer otodidak yang passionate dalam menciptakan pengalaman digital yang menarik.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn primary-btn">Lihat Proyek Saya</a>
+                <a href="#contact" class="btn outline-btn">Hubungi Saya</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <a href="#about"><i class="fas fa-chevron-down"></i></a>
         </div>
     </section>
 
     <section id="about" class="section">
         <h2 class="section-title">Tentang Saya</h2>
         <div class="about-content">
-            <div class="about-text">
-                <p>Saya seorang dengan lulusan sarjana ekonomi dan magister hukum, dan belajar sendiri terhadap bahasa pemprograman</p>
-                <p>Keahlian utama HTML, CSS, JavaScript, React, dll.</p>
+            <div class="about-text fade-in">
+                <p class="about-intro">Dengan latar belakang Sarjana Ekonomi dan Magister Hukum, saya membawa perspektif unik dalam dunia pengembangan web.</p>
+                <p>Saya percaya bahwa teknologi dapat menjembatani berbagai disiplin ilmu untuk menciptakan solusi yang inovatif dan efektif.</p>
             </div>
-            <div class="skills">
-                <h3>Keahlian</h3>
-                <ul>
-                    <li>Web Development</li>
-                    <li>UI/UX Design</li>
-                    <li>Project Management</li>
-                    </ul>
+            <div class="skills-container fade-in">
+                <h3>Keahlian Teknis</h3>
+                <div class="skill-item">
+                    <span>HTML & CSS</span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span>JavaScript</span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span>React</span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span>UI/UX Design</span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 80%"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -52,38 +80,87 @@
     <section id="projects" class="section">
         <h2 class="section-title">Proyek Pilihan</h2>
         <div class="project-grid">
-            <div class="project-item">
-                <div class="project-image"></div> 
-                <h3>Proyek A: E-Commerce Platform</h3>
-                <p>Deskripsi singkat tentang proyek ini dan teknologi yang digunakan.</p>
-                <a href="#" target="_blank" class="project-link">Lihat Detail &rarr;</a>
-            </div>
-            <div class="project-item">
+            <div class="project-item fade-in">
                 <div class="project-image">
-
-[Image of Project 2 Screenshot]
-</div>
-                <h3>Proyek B: Aplikasi Mobile</h3>
-                <p>Deskripsi singkat tentang proyek ini dan teknologi yang digunakan.</p>
-                <a href="#" target="_blank" class="project-link">Lihat Detail &rarr;</a>
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="project-info">
+                    <h3>E-Commerce Platform</h3>
+                    <p>Platform belanja modern dengan fitur keranjang, pembayaran, dan manajemen produk.</p>
+                    <div class="project-tech">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
+                    </div>
+                    <a href="https://github.com/ivomahendra/resto-caffe" class="project-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
+            <div class="project-item fade-in">
+                <div class="project-image">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="project-info">
+                    <h3>Aplikasi Mobile</h3>
+                    <p>Aplikasi manajemen tugas dengan fitur real-time sync dan notifikasi push.</p>
+                    <div class="project-tech">
+                        <span>React Native</span>
+                        <span>Firebase</span>
+                        <span>Redux</span>
+                    </div>
+                    <a href="#" class="project-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
+            <div class="project-item fade-in">
+                <div class="project-image">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="project-info">
+                    <h3>Dashboard Analytics</h3>
+                    <p>Dashboard interaktif untuk visualisasi data bisnis secara real-time.</p>
+                    <div class="project-tech">
+                        <span>Vue.js</span>
+                        <span>D3.js</span>
+                        <span>Express</span>
+                    </div>
+                    <a href="#" class="project-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="contact" class="section contact">
         <h2 class="section-title">Mari Bekerja Sama</h2>
-        <p>Saya terbuka untuk kesempatan proyek baru. Hubungi saya di :</p>
-        <p class="contact-info">
-            Email: ivo.click@gmail.com 
-        </p>
-        <a href="mailto:ivo.click@gmail.com" class="btn secondary-btn">Kirim Email</a>
-        <a href="https://wa.me/6281225110044" class="whatsapp-float" target="_blank" aria-label="Chat via WhatsApp">
-    <img src="icon/wa.png" alt="WhatsApp">
-</a>
+        <div class="contact-content fade-in">
+            <p>Saya selalu terbuka untuk diskusi proyek baru atau kolaborasi menarik.</p>
+            <div class="contact-info">
+                <a href="mailto:ivo.click@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>ivo.click@gmail.com</span>
+                </a>
+                <a href="tel:+6281225110044" class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+62 812-2511-0044</span>
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <a href="mailto:ivo.click@gmail.com" class="btn primary-btn">Kirim Pesan</a>
+        </div>
     </section>
 
+    <a href="https://wa.me/6281225110044" class="whatsapp-float" target="_blank" aria-label="Chat via WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <button class="back-to-top" aria-label="Kembali ke atas">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <footer class="footer">
-        <p>&copy; 2025 ivo_Mahendra</p>
+        <p>&copy; 2025 Ivo Mahendra. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>

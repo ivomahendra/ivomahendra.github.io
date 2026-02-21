@@ -1,52 +1,170 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Toggle Menu
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
-
-    // 1. Toggle Menu Navigasi untuk Mobile
+    
     menuToggle.addEventListener('click', function(e) {
-        e.stopPropagation(); // Mencegah event klik menyebar ke document
+        e.stopPropagation();
         navMenu.classList.toggle('active');
+        const icon = this.querySelector('i');
+        if (navMenu.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
     });
-
-    // 2. Tutup Menu Navigasi ketika link diklik (agar lebih baik di mobile)
-    document.querySelectorAll('.nav-menu a').forEach(item => {
-        item.addEventListener('click', function() {
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
+    
+    // Close menu when clicking a link
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
             if (window.innerWidth <= 768) {
                 navMenu.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
             }
         });
     });
-
-    // 3. Menutup Menu ketika mengklik di luar area nav-menu atau menu-toggle
-    document.addEventListener('click', function(e) {
-        // Cek apakah klik berasal dari luar navMenu dan bukan dari menuToggle
-        // `!navMenu.contains(e.target)`: Klik tidak berada di dalam navMenu
-        // `e.target !== menuToggle`: Klik bukan pada tombol toggle itu sendiri
+    
+    // Typing Effect
+    const typedTextSpan = document.querySelector('.typed-text');
+    const cursorSpan = document.querySelector('.cursor');
+    
+    if (typedTextSpan) {
+        const textArray = ['Web Developer', 'UI/UX Designer', 'Problem Solver', 'Creative Thinker'];
+        let textArrayIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingDelay = 100;
+        let erasingDelay = 50;
+        let newTextDelay = 2000;
         
-        if (!navMenu.contains(e.target) && e.target !== menuToggle && navMenu.classList.contains('active')) {
-            // Hapus kelas 'active' jika menu sedang terbuka
-            navMenu.classList.remove('active');
+        function type() {
+            const currentText = textArray[textArrayIndex];
+            
+            if (isDeleting) {
+                typedTextSpan.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedTextSpan.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                isDeleting = true;
+                setTimeout(type, newTextDelay);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textArrayIndex = (textArrayIndex + 1) % textArray.length;
+                setTimeout(type, typingDelay);
+            } else {
+                setTimeout(type, isDeleting ? erasingDelay : typingDelay);
+            }
         }
-    });
-
-    // 3. (Opsional) Efek Header saat Scroll
+        
+        setTimeout(type, newTextDelay);
+    }
+    
+    // Header scroll effect
     const header = document.querySelector('.header');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            header.style.backgroundColor = 'rgba(26, 26, 26, 0.95)'; // Sedikit transparan
+    let lastScroll = 0;
+    
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 50) {
+            header.style.background = 'rgba(10, 10, 10, 0.98)';
+            header.style.backdropFilter = 'blur(10px)';
         } else {
-            header.style.backgroundColor = 'var(--bg-color)';
+            header.style.background = 'rgba(10, 10, 10, 0.95)';
         }
+        
+        // Hide/show header on scroll
+        if (currentScroll > lastScroll && currentScroll > 500) {
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            header.style.transform = 'translateY(0)';
+        }
+        
+        lastScroll = currentScroll;
     });
-
-    // 4. (Opsional) Implementasi Smooth Scrolling
+    
+    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', function(e) {
             e.preventDefault();
-
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         });
     });
+    
+    // Fade in elements on scroll
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    function checkFade() {
+        fadeElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementBottom = element.getBoundingClientRect().bottom;
+            
+            if (elementTop < window.innerHeight - 100 && elementBottom > 0) {
+                element.classList.add('visible');
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', checkFade);
+    window.addEventListener('resize', checkFade);
+    checkFade(); // Check on load
+    
+    // Back to top button
+    const backToTop = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 500) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
+    });
+    
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Progress bar animation
+    const progressBars = document.querySelectorAll('.progress');
+    
+    function animateProgressBars() {
+        progressBars.forEach(bar => {
+            const barPosition = bar.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+            
+            if (barPosition < screenPosition) {
+                bar.style.width = bar.style.width; // Width already set in HTML
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', animateProgressBars);
+    animateProgressBars();
 });

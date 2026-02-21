@@ -6,11 +6,13 @@
 }
 
 :root {
-    --bg-color: #1a1a1a;        /* Warna latar belakang gelap */
-    --text-color: #f0f0f0;      /* Warna teks terang */
-    --primary-color: #BB86FC;   /* Warna aksen ungu (gaya dark mode) */
-    --secondary-color: #03dac6; /* Warna aksen sekunder */
-    --card-bg: #2c2c2c;         /* Warna latar belakang kartu */
+    --bg-color: #0a0a0a;
+    --text-color: #ffffff;
+    --primary-color: #6c5ce7;
+    --secondary-color: #a8a4e6;
+    --accent-color: #00cec9;
+    --card-bg: #1a1a1a;
+    --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --font-family: 'Poppins', sans-serif;
 }
 
@@ -19,13 +21,13 @@ body {
     color: var(--text-color);
     font-family: var(--font-family);
     line-height: 1.6;
-    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 /* HEADER & NAVIGASI */
 .header {
-    background: var(--bg-color);
-    color: var(--text-color);
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,32 +36,49 @@ body {
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
 .logo {
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 700;
-    color: var(--primary-color);
-    font-family: 'Dancing Script' , cursive;
-    line-height: 1;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Dancing Script', cursive;
     text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
 }
 
 .nav-menu a {
     color: var(--text-color);
     text-decoration: none;
-    margin-left: 20px;
-    font-weight: 400;
-    transition: color 0.3s;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
 }
 
-.nav-menu a:hover {
-    color: var(--primary-color);
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient);
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
 }
 
 .menu-toggle {
-    display: none; /* Sembunyikan di desktop */
+    display: none;
     background: none;
     border: none;
     color: var(--text-color);
@@ -67,299 +86,497 @@ body {
     cursor: pointer;
 }
 
-/* BAGIAN HERO (HOME) */
+/* HERO SECTION */
 .hero {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top: 0; /* Offset dari header */
     position: relative;
-    z-index: 1;
+    overflow: hidden;
 }
 
 .hero-bg {
-    /* Setel posisi absolut agar mengisi seluruh parent (.hero) */
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    
-    /* 1. Tambahkan gambar latar belakang Anda */
-    background-image: url('icon/ivo.jpg'); 
+    background-image: url('icon/ivo.jpg');
     background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
-    
-    /* 2. Setel Opasitas (30% atau 0.3) */
-    opacity: 0.1; 
-    
-    /* 3. Pastikan gambar berada di belakang teks */
-    z-index: 0; 
+    background-position: center;
+    filter: brightness(0.3) blur(3px);
+    transform: scale(1.1);
+    z-index: -1;
 }
+
 .hero-content {
-    z-index: 2;
+    max-width: 800px;
+    padding: 2rem;
+    animation: fadeInUp 1s ease;
 }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .hero-content h1 {
-    z-index: 2;
-    color: var(--text-color);
-    padding: 20px;
     font-size: 3.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
-.tagline {
-    font-size: 1.5rem;
-    color: var(--secondary-color);
-    margin-bottom: 2rem;
+.highlight {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* TOMBOL */
-.btn {
-    padding: 10px 25px;
-    text-decoration: none;
-    border: 2px solid;
-    border-radius: 5px;
+.typed-text {
+    font-size: 2rem;
+    color: var(--accent-color);
     font-weight: 600;
-    transition: all 0.3s;
+}
+
+.cursor {
+    display: inline-block;
+    width: 3px;
+    margin-left: 4px;
+    background: var(--accent-color);
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin: 1.5rem 0;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.btn {
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
     display: inline-block;
 }
 
 .primary-btn {
-    background: var(--primary-color);
-    color: var(--bg-color);
-    border-color: var(--primary-color);
+    background: var(--gradient);
+    color: white;
+    border: none;
 }
 
 .primary-btn:hover {
-    background: none;
-    color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
 }
 
-.secondary-btn {
-    background: none;
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-    margin-top: 20px;
+.outline-btn {
+    background: transparent;
+    color: var(--text-color);
+    border: 2px solid var(--primary-color);
 }
 
-.secondary-btn:hover {
+.outline-btn:hover {
     background: var(--primary-color);
-    color: var(--bg-color);
+    color: white;
+    transform: translateY(-3px);
 }
 
-/* BAGIAN UMUM */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator a {
+    color: var(--text-color);
+    font-size: 1.5rem;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
+}
+
+/* SECTION UMUM */
 .section {
-    padding: 80px 5%;
+    padding: 100px 5%;
     max-width: 1200px;
     margin: 0 auto;
     min-height: 100vh;
-    display: flex; 
+    display: flex;
     flex-direction: column;
-    justify-content: center; /* Pusatkan konten secara vertikal */
-    align-items: center; /* Pusatkan konten secara horizontal (jika tidak dibatasi lebar) */
-    text-align: center; /* Opsional: untuk pemusatan teks */
+    justify-content: center;
 }
 
 .section-title {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 40px;
-    color: var(--primary-color);
+    margin-bottom: 3rem;
+    position: relative;
 }
 
-/* BAGIAN TENTANG */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: var(--gradient);
+}
+
+/* ABOUT SECTION */
 .about-content {
-    display: flex;
-    gap: 50px;
-    align-items: flex-start;
-    max-width: 1000px;
-    width: 100%;
-    margin-top: 20px;
-    /*justify-content: center;
-    /*padding-top: 80px; /* Tambahkan kembali padding agar tidak menempel ke header */
-    /*text-align: left; /* Kembalikan teks ke kiri untuk paragraf */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
 }
 
 .about-text {
-    flex: 2;
     font-size: 1.1rem;
 }
 
-.skills {
-    flex: 1;
+.about-intro {
+    font-size: 1.3rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+}
+
+.skills-container {
     background: var(--card-bg);
-    padding: 20px;
-    border-radius: 8px;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.skills ul {
-    list-style: none;
+.skills-container h3 {
+    margin-bottom: 1.5rem;
+    color: var(--accent-color);
 }
 
-.skills li {
-    padding: 5px 0;
-    border-bottom: 1px solid #444;
+.skill-item {
+    margin-bottom: 1.2rem;
 }
 
-/* BAGIAN PROYEK */
-#projects {
-    padding-top: 80px; /* Tambahkan padding agar tidak menempel ke header */
+.skill-item span {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
 }
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #333;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: var(--gradient);
+    border-radius: 4px;
+    transition: width 1s ease;
+}
+
+/* PROJECTS SECTION */
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1100px;
-    width: 100%;
+    gap: 2rem;
 }
 
 .project-item {
     background: var(--card-bg);
-    padding: 20px;
-    border-radius: 8px;
-    transition: transform 0.3s;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .project-item:hover {
     transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(108, 92, 231, 0.2);
 }
 
 .project-image {
-    background-color: #444; /* Placeholder */
     height: 200px;
-    margin-bottom: 15px;
-    border-radius: 4px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ccc;
 }
 
-.project-item h3 {
-    color: var(--secondary-color);
-    margin-bottom: 10px;
+.project-image i {
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.project-info {
+    padding: 1.5rem;
+}
+
+.project-info h3 {
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.project-tech {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+}
+
+.project-tech span {
+    background: rgba(108, 92, 231, 0.2);
+    color: var(--primary-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
 }
 
 .project-link {
     color: var(--primary-color);
     text-decoration: none;
     font-weight: 600;
-    display: block;
-    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.3s ease;
 }
 
-/* BAGIAN KONTAK */
-.contact {
+.project-link:hover {
+    gap: 1rem;
+}
+
+/* CONTACT SECTION */
+.contact-content {
+    max-width: 600px;
+    margin: 0 auto;
     text-align: center;
 }
 
 .contact-info {
-    margin: 20px 0;
-    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
 }
 
-/* Styling untuk Tombol WhatsApp Mengambang */
-.whatsapp-float {
-    /* Posisi tetap di layar */
-    position: fixed; 
-    width: 60px; /* Ukuran tombol */
-    height: 60px;
-    bottom: 40px; /* Jarak dari bawah */
-    right: 40px; /* Jarak dari kanan */
-    background-color: #25d366; /* Warna hijau WhatsApp */
-    color: #fff;
-    border-radius: 50px; /* Bentuk lingkaran */
-    text-align: center;
-    box-shadow: 2px 2px 3px #999;
-    z-index: 1001; /* Pastikan di atas elemen lain */
+.contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 1rem;
+    background: var(--card-bg);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    background: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.social-links {
     display: flex;
     justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.social-link {
+    width: 45px;
+    height: 45px;
+    background: var(--card-bg);
+    border-radius: 50%;
+    display: flex;
     align-items: center;
-    transition: transform 0.3s ease;
+    justify-content: center;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    text-decoration: none;
+    box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+    transition: all 0.3s ease;
+    z-index: 999;
 }
 
 .whatsapp-float:hover {
-    transform: scale(1.1); /* Efek saat dihover */
+    transform: scale(1.1) rotate(360deg);
 }
 
-.whatsapp-float img {
-    width: 35px; /* Ukuran ikon di dalam tombol */
-    height: 35px;
+/* BACK TO TOP */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    border: none;
     border-radius: 50%;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 20px rgba(108, 92, 231, 0.3);
+    transition: all 0.3s ease;
+    z-index: 999;
 }
 
-/* Responsif: Kecilkan ukuran di layar mobile */
-@media (max-width: 600px) {
-    .whatsapp-float {
-        width: 50px;
-        height: 50px;
-        bottom: 20px;
-        right: 20px;
-    }
-    
-    .whatsapp-float img {
-        width: 30px;
-        height: 30px;
-    }
+.back-to-top.show {
+    display: flex;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
 }
 
 /* FOOTER */
 .footer {
     text-align: center;
-    padding: 20px;
+    padding: 2rem;
     border-top: 1px solid #333;
-    font-size: 0.9rem;
 }
 
-/* MEDIA QUERIES (Responsif) */
+/* FADE IN ANIMATION */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MEDIA QUERIES */
 @media (max-width: 768px) {
-    .header {
-        padding: 1rem 20px;
-    }
-    
     .nav-menu {
-        display: none; /* Sembunyikan menu di mobile secara default */
-        flex-direction: column;
+        display: none;
         position: absolute;
-        top: 60px;
+        top: 70px;
         left: 0;
         width: 100%;
-        background-color: var(--bg-color);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        padding: 10px 0;
+        background: var(--bg-color);
+        padding: 2rem;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     }
-
-    .nav-menu a {
-        margin: 10px 20px;
-        padding: 5px 0;
-        border-bottom: 1px solid #333;
-    }
-
+    
     .nav-menu.active {
-        display: flex; /* Tampilkan jika class active ditambahkan oleh JS */
+        display: flex;
     }
-
+    
     .menu-toggle {
-        display: block; /* Tampilkan tombol toggle */
+        display: block;
     }
-
+    
     .hero-content h1 {
         font-size: 2.5rem;
     }
+    
+    .typed-text {
+        font-size: 1.5rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        bottom: 20px;
+        left: 20px;
+    }
+}
 
-    .tagline {
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .typed-text {
         font-size: 1.2rem;
     }
-
-    .about-content {
-        flex-direction: column;
-    }
-
-    .about-text, .skills {
-        width: 100%;
-        margin-bottom: 30px;
+    
+    .section {
+        padding: 80px 20px;
     }
 }
