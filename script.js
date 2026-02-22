@@ -167,4 +167,148 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', animateProgressBars);
     animateProgressBars();
+    
+    // Project Modal Functionality
+    const projectData = {
+        ecommerce: {
+            title: 'E-Commerce Platform',
+            icon: 'fas fa-shopping-cart',
+            description: 'Platform belanja modern dengan fitur keranjang dinamis, sistem pembayaran terintegrasi, dan manajemen produk yang komprehensif. Dibangun dengan arsitektur yang scalable dan user experience yang intuitif.',
+            details: [
+                {
+                    label: 'Deskripsi',
+                    content: 'Platform e-commerce lengkap yang memungkinkan pengguna untuk browsing, mencari, dan membeli produk dengan mudah. Fitur pencarian advanced, review produk, dan sistem rekomendasi.'
+                },
+                {
+                    label: 'Fitur Utama',
+                    content: 'Keranjang belanja real-time, sistem pembayaran aman, tracking pesanan, wishlist, review & rating, promo code, dan admin dashboard.'
+                }
+            ],
+            technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'Redux', 'Stripe API'],
+            github: 'https://github.com/ivomahendra/resto-caffe',
+            live: '#'
+        },
+        mobile: {
+            title: 'Aplikasi Mobile',
+            icon: 'fas fa-mobile-alt',
+            description: 'Aplikasi manajemen tugas yang powerful dengan sinkronisasi real-time, notifikasi push otomatis, dan interface yang user-friendly. Membantu pengguna meningkatkan produktivitas mereka.',
+            details: [
+                {
+                    label: 'Deskripsi',
+                    content: 'Aplikasi mobile untuk manajemen tugas harian dengan fitur kolaborasi tim, deadline tracking, dan progress monitoring yang real-time.'
+                },
+                {
+                    label: 'Fitur Utama',
+                    content: 'Real-time sync, push notifications, offline mode, team collaboration, recurring tasks, priority management, dan analytics dashboard.'
+                }
+            ],
+            technologies: ['React Native', 'Firebase', 'Redux', 'Expo', 'AsyncStorage'],
+            github: '#',
+            live: '#'
+        },
+        dashboard: {
+            title: 'Dashboard Analytics',
+            icon: 'fas fa-chart-line',
+            image: 'icon/dasboard-analystic.png',
+            description: 'Dashboard interaktif yang menyajikan visualisasi data bisnis secara real-time dengan grafik yang indah dan informatif. Membantu pengambilan keputusan yang lebih baik.',
+            details: [
+                {
+                    label: 'Deskripsi',
+                    content: 'Dashboard komprehensif untuk visualisasi dan analisis data bisnis dengan berbagai macam chart dan metrik performa yang dapat dikustomisasi.'
+                },
+                {
+                    label: 'Fitur Utama',
+                    content: 'Real-time data visualization, custom widgets, export reports, filtering & drilling down, responsive design, dan interactive charts.'
+                }
+            ],
+            technologies: ['Vue.js', 'D3.js', 'Express', 'MongoDB', 'Chart.js', 'Axios'],
+            github: '#',
+            live: 'https://ivomahendra.github.io/Dasboard-Analystics/'
+        }
+    };
+    
+    const modal = document.getElementById('projectModal');
+    const modalClose = document.querySelector('.modal-close');
+    const openProjectBtns = document.querySelectorAll('.open-project');
+    
+    function openProjectModal(projectKey) {
+        const project = projectData[projectKey];
+        if (!project) return;
+        
+        let detailsHTML = '';
+        project.details.forEach(detail => {
+            detailsHTML += `
+                <div class="detail-group">
+                    <h4>${detail.label}</h4>
+                    <p>${detail.content}</p>
+                </div>
+            `;
+        });
+        
+        let buttonsHTML = '';
+        if (project.github !== '#') {
+            buttonsHTML += `<a href="${project.github}" target="_blank" class="btn-primary">Repository <i class="fas fa-external-link-alt"></i></a>`;
+        }
+        if (project.live !== '#') {
+            buttonsHTML += `<a href="${project.live}" target="_blank" class="btn-primary">Live Demo <i class="fas fa-external-link-alt"></i></a>`;
+        }
+        
+        let imageHTML = '';
+        if (project.image) {
+            imageHTML = `<img src="${project.image}" alt="${project.title}" class="project-preview-image">`;
+        }
+        
+        const modalBody = modal.querySelector('.modal-body');
+        modalBody.innerHTML = `
+            <div class="project-image-large">
+                <i class="${project.icon}"></i>
+            </div>
+            <h2>${project.title}</h2>
+            <p class="project-description">${project.description}</p>
+            ${imageHTML}
+            <div class="project-details">
+                ${detailsHTML}
+            </div>
+            <div class="detail-group">
+                <h4>Teknologi</h4>
+                <div class="tech-stack">
+                    ${project.technologies.map(tech => `<span class="tech-badge">${tech}</span>`).join('')}
+                </div>
+            </div>
+            ${buttonsHTML ? `<div class="modal-buttons">${buttonsHTML}</div>` : ''}
+        `;
+        
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeProjectModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+    
+    // Event listeners
+    openProjectBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const projectKey = btn.getAttribute('data-project');
+            openProjectModal(projectKey);
+        });
+    });
+    
+    modalClose.addEventListener('click', closeProjectModal);
+    
+    // Close modal when clicking on overlay
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeProjectModal();
+        }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeProjectModal();
+        }
+    });
 });

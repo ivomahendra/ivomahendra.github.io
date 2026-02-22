@@ -80,7 +80,7 @@
     <section id="projects" class="section">
         <h2 class="section-title">Proyek Pilihan</h2>
         <div class="project-grid">
-            <div class="project-item fade-in">
+            <div class="project-item fade-in" data-project="ecommerce">
                 <div class="project-image">
                     <i class="fas fa-shopping-cart"></i>
                 </div>
@@ -92,10 +92,10 @@
                         <span>Node.js</span>
                         <span>MongoDB</span>
                     </div>
-                    <a href="https://github.com/ivomahendra/resto-caffe" class="project-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                    <button class="project-link open-project" data-project="ecommerce">Lihat Detail <i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
-            <div class="project-item fade-in">
+            <div class="project-item fade-in" data-project="mobile">
                 <div class="project-image">
                     <i class="fas fa-mobile-alt"></i>
                 </div>
@@ -107,10 +107,10 @@
                         <span>Firebase</span>
                         <span>Redux</span>
                     </div>
-                    <a href="#" class="project-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                    <button class="project-link open-project" data-project="mobile">Lihat Detail <i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
-            <div class="project-item fade-in">
+            <div class="project-item fade-in" data-project="dashboard">
                 <div class="project-image">
                     <i class="fas fa-chart-line"></i>
                 </div>
@@ -122,11 +122,23 @@
                         <span>D3.js</span>
                         <span>Express</span>
                     </div>
-                    <a href="#" class="project-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                    <button class="project-link open-project" data-project="dashboard">Lihat Detail <i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Modal Project Detail -->
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Tutup modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body">
+                <!-- Project content will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
 
     <section id="contact" class="section contact">
         <h2 class="section-title">Mari Bekerja Sama</h2>
