@@ -2,39 +2,30 @@ document.addEventListener('DOMContentLoaded', function() {
     // Toggle Menu
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
+    const navClose = document.querySelector('.nav-close');
     
     menuToggle.addEventListener('click', function(e) {
         e.stopPropagation();
         navMenu.classList.toggle('active');
-        const icon = this.querySelector('i');
-        if (navMenu.classList.contains('active')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-        } else {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        }
+    });
+
+    // Close menu with close button
+    navClose.addEventListener('click', function(e) {
+        e.stopPropagation();
+        navMenu.classList.remove('active');
     });
     
     // Close menu when clicking outside
     document.addEventListener('click', function(e) {
         if (!navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('active')) {
             navMenu.classList.remove('active');
-            const icon = menuToggle.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
         }
     });
     
     // Close menu when clicking a link
-    document.querySelectorAll('.nav-menu a').forEach(link => {
+    document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-                navMenu.classList.remove('active');
-                const icon = menuToggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
+            navMenu.classList.remove('active');
         });
     });
     
