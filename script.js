@@ -302,4 +302,41 @@ document.addEventListener('DOMContentLoaded', function() {
             closeProjectModal();
         }
     });
+
+    // Social Links Modal Functionality
+    const socialModal = document.getElementById('socialModal');
+    const socialModalBtn = document.getElementById('socialModalBtn');
+    const socialModalClose = socialModal.querySelector('.modal-close');
+
+    function openSocialModal() {
+        socialModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeSocialModal() {
+        socialModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Event listeners for social modal
+    socialModalBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openSocialModal();
+    });
+
+    socialModalClose.addEventListener('click', closeSocialModal);
+
+    // Close social modal when clicking on overlay
+    socialModal.addEventListener('click', (e) => {
+        if (e.target === socialModal) {
+            closeSocialModal();
+        }
+    });
+
+    // Close social modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && socialModal.classList.contains('active')) {
+            closeSocialModal();
+        }
+    });
 });

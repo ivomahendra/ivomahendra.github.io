@@ -896,6 +896,69 @@ body {
     background: rgba(108, 92, 231, 0.2);
 }
 
+/* Social Modal Styling */
+.social-modal-content {
+    text-align: center;
+}
+
+.social-modal-content h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.social-modal-content > p {
+    color: #999;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+.social-modal-content .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.social-modal-content .social-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    padding: 1rem;
+    border-radius: 15px;
+    border: 2px solid transparent;
+}
+
+.social-modal-content .social-link i {
+    font-size: 3rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: transform 0.3s ease;
+}
+
+.social-modal-content .social-link span {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+}
+
+.social-modal-content .social-link:hover {
+    border-color: rgba(108, 92, 231, 0.5);
+    background: rgba(108, 92, 231, 0.1);
+    transform: translateY(-5px);
+}
+
+.social-modal-content .social-link:hover i {
+    transform: scale(1.1);
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
