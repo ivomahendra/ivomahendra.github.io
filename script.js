@@ -235,6 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ecommerce: {
             title: 'E-Commerce Platform',
             icon: 'fas fa-shopping-cart',
+            image: 'icon/resto&caffe.png',
             description: 'Platform belanja modern dengan fitur keranjang dinamis, sistem pembayaran terintegrasi, dan manajemen produk yang komprehensif.',
             details: [
                 {
@@ -251,21 +252,22 @@ document.addEventListener('DOMContentLoaded', function() {
             live: '#'
         },
         mobile: {
-            title: 'Mobile Banking App',
-            icon: 'fas fa-mobile-alt',
-            description: 'Aplikasi manajemen tugas yang powerful dengan sinkronisasi real-time, notifikasi push otomatis, dan interface yang user-friendly.',
+            title: 'Web App Banking',
+            icon: 'fas fa-university',
+            image: 'icon/Capture Web Banking.png',
+            description: 'Web app perbankan modern dengan tampilan dashboard keuangan, riwayat transaksi, dan keamanan akun yang kuat.',
             details: [
                 {
                     label: 'Deskripsi',
-                    content: 'Aplikasi mobile untuk manajemen tugas harian dengan fitur kolaborasi tim, deadline tracking, dan progress monitoring yang real-time.'
+                    content: 'Web app perbankan untuk melihat saldo, mengelola transaksi, memantau pengeluaran, dan melakukan transfer dengan mudah.'
                 },
                 {
                     label: 'Fitur Utama',
-                    content: 'Real-time sync, push notifications, offline mode, team collaboration, recurring tasks, priority management, dan analytics dashboard.'
+                    content: 'Dashboard transaksi real-time, grafik pengeluaran, transfer dana, notifikasi, keamanan akun, dan laporan riwayat transaksi.'
                 }
             ],
-            technologies: ['React Native', 'Firebase', 'Redux', 'Expo', 'AsyncStorage'],
-            github: '#',
+            technologies: ['React', 'Firebase', 'Tailwind CSS', 'JWT', 'API Banking'],
+            github: 'https://github.com/ivomahendra/web-banking',
             live: '#'
         },
         dashboard: {
@@ -284,8 +286,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             ],
             technologies: ['Vue.js', 'D3.js', 'Express', 'MongoDB', 'Chart.js', 'Axios'],
-            github: '#',
-            live: 'https://ivomahendra.github.io/Dasboard-Analystics/'
+            github: 'https://github.com/ivomahendra/Dasboard-Analystics',
+            live: '#'
         }
     };
 
@@ -364,6 +366,31 @@ document.addEventListener('DOMContentLoaded', function() {
             closeProjectModal();
         }
     });
+
+    modal.addEventListener('click', (e) => {
+        const target = e.target;
+        if (target.classList.contains('project-preview-image')) {
+            e.stopPropagation();
+            openFullscreenImage(target.src, target.alt);
+        }
+    });
+
+    function openFullscreenImage(src, alt) {
+        const overlay = document.createElement('div');
+        overlay.className = 'fullscreen-image-overlay';
+        overlay.innerHTML = `<img src="${src}" alt="${alt}">`;
+        overlay.addEventListener('click', () => overlay.remove());
+        document.body.appendChild(overlay);
+
+        const escapeHandler = (e) => {
+            if (e.key === 'Escape') {
+                overlay.remove();
+                document.removeEventListener('keydown', escapeHandler);
+            }
+        };
+
+        document.addEventListener('keydown', escapeHandler);
+    }
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('active')) {
