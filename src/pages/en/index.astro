@@ -1,0 +1,71 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import RepositoryList from "../../components/RepositoryList.astro";
+import { profile } from "../../data/profile";
+import { projects } from "../../data/projects";
+import { skillGroups } from "../../data/skills";
+const featured = projects.filter((project) => project.featured);
+---
+<BaseLayout lang="en" title="Ivo Mahendra — Web Developer & Software Engineer" description={profile.summary.en}>
+  <Header lang="en" />
+  <main>
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="pulse"></span> {profile.location} · {profile.availability.en}</p>
+        <h1>Building the web.<br /><span>Creating solutions.</span></h1>
+        <p class="hero-summary">{profile.summary.en}</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">Explore projects <span>↘</span></a>
+          <a class="button button-quiet" href="#contact">Let's collaborate ↗</a>
+        </div>
+      </div>
+      <div class="hero-aside profile-portrait" data-reveal>
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <img src={profile.photo} alt="Foto profil Ivo Mahendra" loading="eager" />
+        <span class="portrait-caption">WEB / SOFTWARE ENGINEERING</span>
+        <span class="aside-coordinate">07°S · 112°E</span>
+      </div>
+      <div class="hero-bottom"><span>SCROLL TO EXPLORE</span><span>01 — 06</span></div>
+    </section>
+    <section class="section wrap about-section" id="about" data-reveal>
+      <div class="section-label"><p class="eyebrow">01 / ABOUT ME</p></div>
+      <div class="about-copy">
+        <h2>I'm interested in technology that's <em>useful</em>, not just impressive.</h2>
+        <p>I explore web development and software engineering through real projects, experiments, and continuous learning. My focus is building digital products that are functional, accessible, and maintainable.</p>
+      </div>
+    </section>
+    <section class="section wrap" id="projects">
+      <div class="section-top"><div><p class="eyebrow">02 / SELECTED WORK</p><h2>Selected projects<span class="accent">.</span></h2></div><p class="muted section-note">Experiments, systems, and digital products I'm building.</p></div>
+      <div class="project-grid">{featured.map((project) => <ProjectCard project={project} lang="en" />)}</div>
+      <p class="disclaimer">Note: project statuses and details in this initial version are drafts and must be verified before publication as final case studies.</p>
+    </section>
+    <RepositoryList lang="en" />
+    <section class="section wrap skills-section" id="skills">
+      <div class="section-top"><div><p class="eyebrow">03 / TOOLKIT</p><h2>Tools & capabilities<span class="accent">.</span></h2></div></div>
+      <div class="skills-grid">{skillGroups.map((group) => <div class="skill-group"><p class="eyebrow">{group.label}</p><div class="tag-list">{group.skills.map((skill) => <span>{skill}</span>)}</div></div>)}</div>
+    </section>
+    <section class="contact-section" id="contact"><div class="wrap contact-inner">
+      <p class="eyebrow">04 / LET'S BUILD SOMETHING</p><h2>Have an idea?<br /><em>Let's make it real.</em></h2>
+      <p>Open to conversations, collaboration, and challenging projects.</p>
+      <a class="button button-primary" href="https://github.com/ivomahendra" target="_blank" rel="noreferrer">Connect on GitHub ↗</a>
+        <div class="social-links" aria-label="Social media">
+          <a href={profile.linkedin} target="_blank" rel="me noreferrer">LinkedIn ↗</a>
+          <a href={profile.facebook} target="_blank" rel="me noreferrer">Facebook ↗</a>
+          <a href={profile.instagram} target="_blank" rel="me noreferrer">Instagram ↗</a>
+          <a href={profile.github} target="_blank" rel="me noreferrer">GitHub ↗</a>
+        </div>
+    </div></section>
+  </main>
+  <footer class="site-footer wrap">
+    <a class="wordmark" href="/en/">IM<span>.</span></a>
+    <div class="footer-socials">
+      <a href={profile.linkedin} target="_blank" rel="me noreferrer">LinkedIn</a>
+      <a href={profile.facebook} target="_blank" rel="me noreferrer">Facebook</a>
+      <a href={profile.instagram} target="_blank" rel="me noreferrer">Instagram</a>
+      <a href={profile.github} target="_blank" rel="me noreferrer">GitHub</a>
+    </div>
+    <span>© {new Date().getFullYear()} Ivo Mahendra</span>
+  </footer>
+</BaseLayout>

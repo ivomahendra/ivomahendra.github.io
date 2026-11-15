@@ -1,0 +1,26 @@
+---
+import repos from "../data/github-repos.json";
+const { lang = "id" } = Astro.props;
+const heading = lang === "id" ? "Eksplorasi repository" : "Explore repositories";
+const note = lang === "id"
+  ? "Repository publik non-fork yang terdeteksi saat build terakhir."
+  : "Public non-fork repositories detected during the last build.";
+---
+<section class="section wrap repo-section" id="repositories">
+  <div class="section-top">
+    <div><p class="eyebrow">GITHUB / OPEN SOURCE</p><h2>{heading}</h2></div>
+    <a class="text-link" href="https://github.com/ivomahendra?tab=repositories" target="_blank" rel="noreferrer">GitHub profile ↗</a>
+  </div>
+  <p class="muted">{note}</p>
+  {repos.length > 0 ? (
+    <div class="repo-grid">
+      {repos.slice(0, 8).map((repo) => (
+        <a class="repo-card" href={repo.url} target="_blank" rel="noreferrer">
+          <span class="repo-name">{repo.name} ↗</span>
+          <span class="muted">{repo.description || (lang === "id" ? "Belum ada deskripsi." : "No description provided.")}</span>
+          <span class="repo-meta">{repo.language || "Various"} · ★ {repo.stars}</span>
+        </a>
+      ))}
+    </div>
+  ) : <p class="empty-state">{lang === "id" ? "Daftar repository akan muncul setelah sinkronisasi GitHub berhasil." : "Repositories will appear after a successful GitHub sync."}</p>}
+</section>

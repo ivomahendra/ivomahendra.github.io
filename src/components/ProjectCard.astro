@@ -1,0 +1,22 @@
+---
+const { project, lang } = Astro.props;
+const title = project.title[lang];
+const description = project.description[lang];
+const proof = project.proof[lang];
+---
+<article class="project-card" data-reveal>
+  <div class="project-cover">
+    <img src={project.cover} alt="" loading="lazy" />
+    <span class="project-index">{project.category}</span>
+    <span class:list={["status", project.status]}>{project.status.replace("-", " ")}</span>
+  </div>
+  <div class="project-body">
+    <div class="project-heading">
+      <h3>{title}</h3>
+      {project.links.source && <a class="arrow-link" href={project.links.source} target="_blank" rel="noreferrer" aria-label={`Source code for ${title}`}>↗</a>}
+    </div>
+    <p>{description}</p>
+    <p class="project-proof">{proof}</p>
+    <ul class="tag-list">{project.stack.map((tag: string) => <li>{tag}</li>)}</ul>
+  </div>
+</article>

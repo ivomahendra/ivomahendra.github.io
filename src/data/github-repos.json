@@ -1,0 +1,105 @@
+[
+  {
+    "name": "Bank-Soal",
+    "description": "",
+    "url": "https://github.com/ivomahendra/Bank-Soal",
+    "homepage": "",
+    "language": "JavaScript",
+    "stars": 0,
+    "updatedAt": "2026-07-16T02:14:38Z",
+    "topics": []
+  },
+  {
+    "name": "literasi",
+    "description": "literasi bacaan dan mengungkapkan ide/gagasan pokok",
+    "url": "https://github.com/ivomahendra/literasi",
+    "homepage": "",
+    "language": "JavaScript",
+    "stars": 0,
+    "updatedAt": "2026-07-09T03:14:28Z",
+    "topics": []
+  },
+  {
+    "name": "ivomahendra.github.io",
+    "description": "website portofolio",
+    "url": "https://github.com/ivomahendra/ivomahendra.github.io",
+    "homepage": "",
+    "language": "CSS",
+    "stars": 0,
+    "updatedAt": "2026-04-08T08:13:51Z",
+    "topics": []
+  },
+  {
+    "name": "Dasboard-Analystics",
+    "description": "",
+    "url": "https://github.com/ivomahendra/Dasboard-Analystics",
+    "homepage": "",
+    "language": "HTML",
+    "stars": 0,
+    "updatedAt": "2026-02-22T10:32:27Z",
+    "topics": []
+  },
+  {
+    "name": "Radio-AI",
+    "description": "",
+    "url": "https://github.com/ivomahendra/Radio-AI",
+    "homepage": "",
+    "language": "",
+    "stars": 0,
+    "updatedAt": "2026-02-18T06:53:39Z",
+    "topics": []
+  },
+  {
+    "name": "quran-murottal",
+    "description": "Murottal Alquran menggunakan API, untuk memperingan bandwit Github",
+    "url": "https://github.com/ivomahendra/quran-murottal",
+    "homepage": "",
+    "language": "JavaScript",
+    "stars": 0,
+    "updatedAt": "2026-02-18T03:26:12Z",
+    "topics": []
+  },
+  {
+    "name": "resto-caffe",
+    "description": "",
+    "url": "https://github.com/ivomahendra/resto-caffe",
+    "homepage": "",
+    "language": "JavaScript",
+    "stars": 1,
+    "updatedAt": "2025-11-25T09:55:41Z",
+    "topics": []
+  },
+  {
+    "name": "ivomahendra",
+    "description": "Config files for my GitHub profile.",
+    "url": "https://github.com/ivomahendra/ivomahendra",
+    "homepage": "https://github.com/ivomahendra",
+    "language": "CSS",
+    "stars": 1,
+    "updatedAt": "2025-11-21T09:11:37Z",
+    "topics": [
+      "config",
+      "github-config"
+    ]
+  },
+  {
+    "name": "Mahendra",
+    "description": "portofolio",
+    "url": "https://github.com/ivomahendra/Mahendra",
+    "homepage": "",
+    "language": "CSS",
+    "stars": 0,
+    "updatedAt": "2025-02-14T07:51:02Z",
+    "topics": []
+  },
+  {
+    "name": "Belajar-Python",
+    "description": "tempat pentimpanan pembelajaran python saya",
+    "url": "https://github.com/ivomahendra/Belajar-Python",
+    "homepage": "",
+    "language": "Python",
+    "stars": 0,
+    "updatedAt": "2025-02-04T22:45:18Z",
+    "topics": []
+  }
+]

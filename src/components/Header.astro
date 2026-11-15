@@ -1,0 +1,21 @@
+---
+const { lang = "id" } = Astro.props;
+const t = lang === "id"
+  ? { about: "Tentang", work: "Proyek", skills: "Keahlian", contact: "Kontak", switch: "English" }
+  : { about: "About", work: "Work", skills: "Skills", contact: "Contact", switch: "Indonesia" };
+const target = lang === "id" ? "/en/" : "/id/";
+---
+<header class="site-header">
+  <div class="header-inner wrap">
+    <a class="wordmark" href={lang === "id" ? "/id/" : "/en/"} aria-label="Ivo Mahendra home">IM<span>.</span></a>
+    <button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-label="Toggle navigation">☰</button>
+    <nav class="nav-links" data-nav aria-label="Main navigation">
+      <a href="#about">{t.about}</a>
+      <a href="#projects">{t.work}</a>
+      <a href="#skills">{t.skills}</a>
+      <a href="#contact">{t.contact}</a>
+      <a class="language-link" href={target}>{t.switch} ↗</a>
+      <button class="theme-toggle" data-theme-toggle aria-label="Switch theme">◐</button>
+    </nav>
+  </div>
+</header>
